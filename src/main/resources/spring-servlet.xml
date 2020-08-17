@@ -13,33 +13,37 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 配置扫描的包 -->
+    <!-- 配置扫描的包，该包下标记为组件的Class会被自动扫描为Spring的Bean，被容器管理-->
     <context:component-scan base-package="com.mxixm.spring.mvc.*"/>
 
-    <!-- 注册MVC的注解驱动 -->
+    <!-- 注册MVC的注解驱动，使得@RequestMapping相关注解生效-->
     <mvc:annotation-driven/>
 
-    <!--注册事务的注解驱动-->
+    <!--注册事务的注解驱动，使得@Transactional注解生效-->
     <tx:annotation-driven/>
 
-    <!-- 访问静态资源 -->
+    <!-- 访问静态资源-->
     <mvc:default-servlet-handler/>
 
-    <!-- 视图解析器 -->
+    <!-- 视图解析器，支持JSP-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--视图默认从/WEB-INF/view/路径查找模版-->
         <property name="prefix" value="/WEB-INF/view/"></property>
+
+        <!--视图名后缀为.jsp-->
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!-- 数据源 -->
+    <!-- 数据源，使用Tomcat JDBC数据库连接池 -->
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+        <!--数据源连接属性-->
         <property name="url" value="jdbc:mysql://localhost:3306/test"></property>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="username" value="root"></property>
         <property name="password" value="123456"></property>
     </bean>
 
-    <!-- 数据库操作模板 -->
+    <!-- 数据库操作模板Bean -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>
     </bean>

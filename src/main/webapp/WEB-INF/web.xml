@@ -3,9 +3,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>Demo MVC Application</display-name>
+
+    <!--Spring 与 Servlet 容器整合的桥梁，DispathcherServlet，ApplicationContext 在此 Servlet 中创建-->
     <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!--配置 DispatcherServlet 中的 ApplicationContext 使用的配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring-servlet.xml</param-value>
@@ -13,6 +17,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!--所有的请求都交给上面那个Servlet处理-->
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
