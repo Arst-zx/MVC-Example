@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 声明为Spring的Service组件，可以被Spring框架自动扫描到并作为Bean注册到Spring容器中
- * @author zhangx511
+ * @author 章鑫
  */
 @Service
 public class DemoService {

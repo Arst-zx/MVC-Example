@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 声明为Spring MVC的控制器，并作为Bean注册到Spring容器中
- * @author zhangx511
+ * @author 章鑫
  */
 @Controller
 public class DemoController {
